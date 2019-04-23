@@ -1,0 +1,14 @@
+
+\.idea/workspace\.xml
+
+favicon\.ico
+
+lib/
+
+target/
+
+sprites/
+
+info/
+
+*.png

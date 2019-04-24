@@ -20,9 +20,10 @@ public class ChessModel implements IChess {
 
 
     private static IChess instance = null;
+    private static Board board;
 
     private ChessModel(){
-
+        board = new Board();
     }
 
     public static IChess getInstance(){
@@ -44,17 +45,44 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        throw new EmptyCellException();
+
+        Piece current = this.board.getPiece(p);
+
+        if(p.x<0 || p.x>7 || p.y<0 || p.y>7){
+            throw new OutOfBoardException();
+        }
+        else if(current == null){
+           throw new EmptyCellException();
+        }
+        else{
+            return current.getType();
+        }
+
+
+
+
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        throw new EmptyCellException();
+        Piece current = this.board.getPiece(p);
+
+        if(p.x<0 || p.x>7 || p.y<0 || p.y>7){
+            throw new OutOfBoardException();
+        }
+        else if(current == null){
+            throw new EmptyCellException();
+        }
+        else{
+            return current.getColor();
+        }
     }
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return 0;
+
+        int nb = this.board.getNbPiece(color) ;
+        return nb;
     }
 
     @Override

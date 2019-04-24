@@ -7,20 +7,17 @@ public class Piece {
     private IChess.ChessColor Color;
     private IChess.ChessType Type;
 
+    public Piece(IChess.ChessColor color, IChess.ChessType type) {
+        Color = color;
+        Type = type;
+    }
 
     public IChess.ChessColor getColor() {
         return Color;
-    }
-
-    public void setColor(IChess.ChessColor color) {
-        Color = color;
     }
 
     public IChess.ChessType getType() {
         return Type;
     }
 
-    public void setType(IChess.ChessType type) {
-        Type = type;
-    }
 }

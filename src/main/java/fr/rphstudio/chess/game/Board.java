@@ -35,6 +35,12 @@ public class Board {
 
     }
 
+    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+
+        this.tab[p1.x][p1.y] = this.tab[p0.x][p0.y];
+        this.tab[p0.x][p0.y] = null;
+    }
+
     public Piece getPiece(IChess.ChessPosition pos){
         return tab[pos.x][pos.y];
     }

@@ -127,7 +127,9 @@ public interface IChess
             this.y = y0;
         }
 
-        
+        public boolean isValid(){
+            return (this.x < 8)&&(this.x >=0)&&(this.y < 8)&&(this.y >=0);
+        }
         /**
          * Redefinition of the Object class equals method.
          * It is used to compare easily two positions.

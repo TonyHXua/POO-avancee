@@ -23,7 +23,7 @@ public class ChessModel implements IChess {
     private static Board board;
 
     private ChessModel(){
-        board = new Board();
+        reinit();
     }
 
     public static IChess getInstance(){
@@ -32,7 +32,6 @@ public class ChessModel implements IChess {
             ChessModel.instance = new ChessModel();
         }
 
-
         return ChessModel.instance;
 
     }
@@ -40,6 +39,7 @@ public class ChessModel implements IChess {
 
     @Override
     public void reinit() {
+        board = new Board();
 
     }
 

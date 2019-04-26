@@ -32,13 +32,6 @@ public class Piece {
     }
 
     public boolean hasMoved(){
-
-        /*if(this.nbMove != 0){
-            return true;
-        }else{
-            return false;
-        }*/
-
         return this.nbMove != 0;
     }
 

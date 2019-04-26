@@ -18,7 +18,7 @@ public class Pawn implements IMove {
            IChess.ChessPosition pos2 = new IChess.ChessPosition(pos.x, pos.y+1 );
            IChess.ChessPosition pos3 = new IChess.ChessPosition(pos.x-1, pos.y +1);
            IChess.ChessPosition pos4 = new IChess.ChessPosition(pos.x+1, pos.y +1);
-
+           IChess.ChessPosition pos5 = new IChess.ChessPosition(pos.x, pos.y +2);
 
            //si pas de piece
 
@@ -38,6 +38,9 @@ public class Pawn implements IMove {
                 }
 
             }
+            if(!board.getPiece(pos).hasMoved()){
+                moves.add(pos5);
+            }
         }
 
         //si pion = blanc
@@ -46,6 +49,9 @@ public class Pawn implements IMove {
             IChess.ChessPosition pos2 = new IChess.ChessPosition(pos.x, pos.y -1);
             IChess.ChessPosition pos3 = new IChess.ChessPosition(pos.x+1, pos.y -1);
             IChess.ChessPosition pos4 = new IChess.ChessPosition(pos.x-1, pos.y -1);
+            IChess.ChessPosition pos5 = new IChess.ChessPosition(pos.x, pos.y -2);
+
+
             //si pas de piece
 
             if(board.getPiece(pos2) == null) {
@@ -64,8 +70,12 @@ public class Pawn implements IMove {
                 }
 
             }
-
+            if(!board.getPiece(pos).hasMoved()){
+                moves.add(pos5);
+            }
         }
+
+
         return moves;
 
     }

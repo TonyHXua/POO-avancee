@@ -228,6 +228,7 @@ public interface IChess
      * This methods must set all the piece positions on the board according to interface constants.
      */
     public void reinit();
+    
 
     /**
      * Gets the type of a piece at the given position on the board.

@@ -2,7 +2,7 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 
-public class Board {
+public class  Board {
 
     private Piece[][] tab;
 
@@ -13,24 +13,24 @@ public class Board {
             tab[i][IChess.BOARD_POS_Y_BLACK_PAWNS] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_PAWN,new Knight()) ;
             tab[i][IChess.BOARD_POS_Y_WHITE_PAWNS] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_PAWN,new Knight());
         }
-        tab[IChess.BOARD_POS_X_QUEENSIDE_ROOK][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_ROOK,new Knight());
+        tab[IChess.BOARD_POS_X_QUEENSIDE_ROOK][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_ROOK,new Rook());
         tab[IChess.BOARD_POS_X_QUEENSIDE_KNIGHT][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_KNIGHT,new Knight());
-        tab[IChess.BOARD_POS_X_QUEENSIDE_BISHOP][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_BISHOP,new Knight());
-        tab[IChess.BOARD_POS_X_QUEEN][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN,new Knight());
+        tab[IChess.BOARD_POS_X_QUEENSIDE_BISHOP][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_BISHOP,new Bishop());
+        tab[IChess.BOARD_POS_X_QUEEN][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN,new Queen());
         tab[IChess.BOARD_POS_X_KING][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_KING,new King());
-        tab[IChess.BOARD_POS_X_KINGSIDE_BISHOP][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_BISHOP,new Knight());
+        tab[IChess.BOARD_POS_X_KINGSIDE_BISHOP][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_BISHOP,new Bishop());
         tab[IChess.BOARD_POS_X_KINGSIDE_KNIGHT][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_KNIGHT,new Knight());
-        tab[IChess.BOARD_POS_X_KINGSIDE_ROOK][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_ROOK,new Knight());
+        tab[IChess.BOARD_POS_X_KINGSIDE_ROOK][IChess.BOARD_POS_Y_WHITE_PIECES] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_ROOK,new Rook());
 
 
-        tab[IChess.BOARD_POS_X_QUEENSIDE_ROOK][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK,new Knight());
+        tab[IChess.BOARD_POS_X_QUEENSIDE_ROOK][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK,new Rook());
         tab[IChess.BOARD_POS_X_QUEENSIDE_KNIGHT][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_KNIGHT,new Knight());
-        tab[IChess.BOARD_POS_X_QUEENSIDE_BISHOP][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_BISHOP,new Knight());
-        tab[IChess.BOARD_POS_X_QUEEN][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN,new Knight());
+        tab[IChess.BOARD_POS_X_QUEENSIDE_BISHOP][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_BISHOP,new Bishop());
+        tab[IChess.BOARD_POS_X_QUEEN][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN,new Queen());
         tab[IChess.BOARD_POS_X_KING][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_KING,new King());
-        tab[IChess.BOARD_POS_X_KINGSIDE_BISHOP][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_BISHOP,new Knight());
+        tab[IChess.BOARD_POS_X_KINGSIDE_BISHOP][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_BISHOP,new Bishop());
         tab[IChess.BOARD_POS_X_KINGSIDE_KNIGHT][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_KNIGHT,new Knight());
-        tab[IChess.BOARD_POS_X_KINGSIDE_ROOK][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK,new Knight());
+        tab[IChess.BOARD_POS_X_KINGSIDE_ROOK][IChess.BOARD_POS_Y_BLACK_PIECES] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_ROOK,new Rook());
 
 
     }

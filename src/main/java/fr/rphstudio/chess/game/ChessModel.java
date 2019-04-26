@@ -22,6 +22,7 @@ public class ChessModel implements IChess {
     private static IChess instance = null;
     private static Board board;
 
+    //initialize the board with starting positions for all pieces
     private ChessModel(){
         reinit();
     }
@@ -38,6 +39,7 @@ public class ChessModel implements IChess {
 
 
     @Override
+    //reinitialize the board with starting positions for all pieces
     public void reinit() {
         board = new Board();
 

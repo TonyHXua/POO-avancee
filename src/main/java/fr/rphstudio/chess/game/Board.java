@@ -37,18 +37,58 @@ public class  Board {
 
     public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
 
+        this.tab[p0.x][p0.y].incNbMove();
+
+        //ROQUE
+        //SI la case n'est pas vide
+        if(this.tab[p1.x][p1.y] != null){
+            //SI les couleur des deux piece sont identique et que leurs type sont KING et ROOK
+            if((tab[p0.x][p0.y].getColor() == tab[p1.x][p1.y].getColor()) && tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_KING && tab[p1.x][p1.y].getType() == IChess.ChessType.TYP_ROOK){
+                //SI la tour est a GAUCHE
+                if(p0.x > p1.x){
+                    //Déplace le roi
+                    this.tab[p0.x-2][p0.y] = this.tab[p0.x][p0.y];
+                    this.tab[p0.x][p0.y] = null;
+                    //Déplace la tour
+                    this.tab[p1.x+3][p1.y] = this.tab[p1.x][p1.y];
+                    this.tab[p1.x][p1.y] = null;
+                }
+
+                //SI la tour est a DROITE
+                if(p0.x < p1.x){
+                    //Déplace le roi
+                    this.tab[p0.x+2][p0.y] = this.tab[p0.x][p0.y];
+                    this.tab[p0.x][p0.y] = null;
+                    //Déplace la tour
+                    this.tab[p1.x-2][p1.y] = this.tab[p1.x][p1.y];
+                    this.tab[p1.x][p1.y] = null;
+                }
+            }
+        }
+        //SI le pion BLANC atteint la premiere ligne
+        if(this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_WHITE && p1.y == 0){
+            this.tab[p0.x][p0.y] = null;
+            this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN,new Queen());
+        }
+
+        //SI le pion NOIR atteint la derniere ligne
+        if(this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_BLACK && p1.y == 7){
+            this.tab[p0.x][p0.y] = null;
+            this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN,new Queen());
+        }
+
         this.tab[p1.x][p1.y] = this.tab[p0.x][p0.y];
         this.tab[p0.x][p0.y] = null;
+
     }
 
     public Piece getPiece(IChess.ChessPosition pos){
-//Sets limits so that clicks outside the board aren't counted as piece getters, now the game won't crash trying to get
-// impossible coordinates
-        if ( (pos.x < 8) && (pos.x >= 0) && (pos.y < 8) && (pos.y >= 0) ) {
+
+        if(pos.x <8 && pos.x >=0 && pos.y <8 && pos.y >=0 ){
             return tab[pos.x][pos.y];
         }
+        return null;
 
-        return null ;
     }
 
     public int getNbPiece(IChess.ChessColor color){

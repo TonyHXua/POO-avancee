@@ -31,7 +31,7 @@ public class King implements IMove {
 
         }
         //Si le roi et la tour n'ont pas bougé   KINGSIDE
-        if(!board.getPiece(pos).hasMoved() && !board.getPiece(new IChess.ChessPosition(pos.x + 3,pos.y)).hasMoved()){
+        if(!board.getPiece(pos).hasMoved() && board.getPiece(new IChess.ChessPosition(7,pos.y)) != null && !board.getPiece(new IChess.ChessPosition(7,pos.y)).hasMoved()){
             //Si l'espace entre le roi et la tour est vide
             if( (board.getPiece(new IChess.ChessPosition(pos.x + 1,pos.y)) == null) && (board.getPiece(new IChess.ChessPosition(pos.x + 2,pos.y)) == null) ){
                 moves.add(new IChess.ChessPosition(pos.x + 3,pos.y));
@@ -39,7 +39,7 @@ public class King implements IMove {
         }
 
         //Si le roi et la tour n'ont pas bougé   QUEENSIDE
-        if(!board.getPiece(pos).hasMoved() && !board.getPiece(new IChess.ChessPosition(pos.x - 4,pos.y)).hasMoved()){
+        if(!board.getPiece(pos).hasMoved() && board.getPiece(new IChess.ChessPosition(0,pos.y)) != null && !board.getPiece(new IChess.ChessPosition(0,pos.y)).hasMoved()){
             //Si l'espace entre le roi et la tour est vide
             if( (board.getPiece(new IChess.ChessPosition(pos.x - 1,pos.y)) == null) && (board.getPiece(new IChess.ChessPosition(pos.x - 2,pos.y)) == null) && (board.getPiece(new IChess.ChessPosition(pos.x - 3,pos.y)) == null)){
                 moves.add(new IChess.ChessPosition(pos.x - 4 ,pos.y));

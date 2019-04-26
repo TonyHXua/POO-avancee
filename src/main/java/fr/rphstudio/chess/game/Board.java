@@ -37,13 +37,13 @@ public class  Board {
 
     public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
 
-        this.tab[p0.x][p0.y].incNbMove();
+        //this.tab[p0.x][p0.y].incNbMove();
 
         //ROQUE
         //SI la case n'est pas vide
         if(this.tab[p1.x][p1.y] != null){
             //SI les couleur des deux piece sont identique et que leurs type sont KING et ROOK
-            if((tab[p0.x][p0.y].getColor() == tab[p1.x][p1.y].getColor()) && tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_KING && tab[p1.x][p1.y].getType() == IChess.ChessType.TYP_ROOK){
+            if((tab[p0.x][p0.y].getColor() == tab[p1.x][p1.y].getColor())){
                 //SI la tour est a GAUCHE
                 if(p0.x > p1.x){
                     //Déplace le roi
@@ -65,21 +65,24 @@ public class  Board {
                 }
             }
         }
+
+        //PROMOTION
         //SI le pion BLANC atteint la premiere ligne
-        if(this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_WHITE && p1.y == 0){
+        if (this.tab[p0.x][p0.y] != null) {
+            if (this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_WHITE && p1.y == 0) {
+                //this.tab[p0.x][p0.y] = null;
+                this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN, new Queen());
+            }
+
+            //SI le pion NOIR atteint la derniere ligne
+            if (this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_BLACK && p1.y == 7) {
+                //this.tab[p0.x][p0.y] = null;
+                this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN, new Queen());
+            }
+
+            this.tab[p1.x][p1.y] = this.tab[p0.x][p0.y];
             this.tab[p0.x][p0.y] = null;
-            this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_WHITE, IChess.ChessType.TYP_QUEEN,new Queen());
         }
-
-        //SI le pion NOIR atteint la derniere ligne
-        if(this.tab[p0.x][p0.y].getType() == IChess.ChessType.TYP_PAWN && this.tab[p0.x][p0.y].getColor() == IChess.ChessColor.CLR_BLACK && p1.y == 7){
-            this.tab[p0.x][p0.y] = null;
-            this.tab[p0.x][p0.y] = new Piece(IChess.ChessColor.CLR_BLACK, IChess.ChessType.TYP_QUEEN,new Queen());
-        }
-
-        this.tab[p1.x][p1.y] = this.tab[p0.x][p0.y];
-        this.tab[p0.x][p0.y] = null;
-
     }
 
     public Piece getPiece(IChess.ChessPosition pos){

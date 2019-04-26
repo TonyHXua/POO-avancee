@@ -103,7 +103,48 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
+        ChessPosition KingPosition = null;
+
+        for(int i = 0; i<8 && KingPosition == null ; i++){
+            for(int j = 0; j<8 && KingPosition == null ; j++){
+
+                ChessPosition pos = new ChessPosition(i, j);
+                Piece current = board.getPiece(pos);
+
+                if(current !=null){
+                    if(current.getType()==ChessType.TYP_KING && current.getColor()==color){
+                        KingPosition = new ChessPosition(i, j);
+                    }
+                }
+            }
+        }
+
+        if(KingPosition == null){
+            return ChessKingState.KING_SAFE;
+        }
+
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+
+                ChessPosition pos = new ChessPosition(i, j);
+                Piece current = board.getPiece(pos);
+
+                if(current != null){
+                    if(current.getColor() != color){
+                        ChessPosition currentPos = new ChessPosition(i,j);
+                        List<ChessPosition> positionList = current.getMoves(currentPos,board);
+                        for(ChessPosition p: positionList){
+                            if(p.equals(KingPosition)){
+                                return ChessKingState.KING_THREATEN;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
         return ChessKingState.KING_SAFE;
+
     }
 
     @Override

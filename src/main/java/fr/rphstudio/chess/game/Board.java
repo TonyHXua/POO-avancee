@@ -42,7 +42,13 @@ public class Board {
     }
 
     public Piece getPiece(IChess.ChessPosition pos){
-        return tab[pos.x][pos.y];
+//Sets limits so that clicks outside the board aren't counted as piece getters, now the game won't crash trying to get
+// impossible coordinates
+        if ( (pos.x < 8) && (pos.x >= 0) && (pos.y < 8) && (pos.y >= 0) ) {
+            return tab[pos.x][pos.y];
+        }
+
+        return null ;
     }
 
     public int getNbPiece(IChess.ChessColor color){

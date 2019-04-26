@@ -28,6 +28,7 @@ public class King implements IMove {
                     moves.add(new IChess.ChessPosition(pos2.x,pos2.y));
                 }
             }
+
         }
         //Si le roi et la tour n'ont pas bougé   KINGSIDE
         if(!board.getPiece(pos).hasMoved() && !board.getPiece(new IChess.ChessPosition(pos.x + 3,pos.y)).hasMoved()){

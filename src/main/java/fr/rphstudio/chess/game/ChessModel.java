@@ -102,23 +102,28 @@ public class ChessModel implements IChess {
     }
 
     @Override
+    //returns the King's status (safe or threatened)
     public ChessKingState getKingState(ChessColor color) {
         ChessPosition KingPosition = null;
 
+        //loops to browse the whole board
         for(int i = 0; i<8 && KingPosition == null ; i++){
             for(int j = 0; j<8 && KingPosition == null ; j++){
 
                 ChessPosition pos = new ChessPosition(i, j);
                 Piece current = board.getPiece(pos);
 
+                //checks if there is a piece on the case
                 if(current !=null){
+                    //checks if the piece's type is KING and of the playing color
                     if(current.getType()==ChessType.TYP_KING && current.getColor()==color){
+                        //gets the King of the playing color' coordinates
                         KingPosition = new ChessPosition(i, j);
                     }
                 }
             }
         }
-
+        //default state of the King is SAFE
         if(KingPosition == null){
             return ChessKingState.KING_SAFE;
         }
@@ -130,11 +135,14 @@ public class ChessModel implements IChess {
                 Piece current = board.getPiece(pos);
 
                 if(current != null){
+                    //checks if the piece is of the opponent's color
                     if(current.getColor() != color){
                         ChessPosition currentPos = new ChessPosition(i,j);
+                        //checks all the possible moves of all the opponent's pieces
                         List<ChessPosition> positionList = current.getMoves(currentPos,board);
-                        for(ChessPosition p: positionList){
-                            if(p.equals(KingPosition)){
+                        for(ChessPosition threat: positionList){
+                            //checks if YOUR King is on any of the opponent's pieces' possible moves
+                            if(threat.equals(KingPosition)){
                                 return ChessKingState.KING_THREATEN;
                             }
                         }
